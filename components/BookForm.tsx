@@ -107,7 +107,7 @@ export default function BookForm({
             renderOption={(props, option) => (
               <li {...props} key={option.id}>
                 {option.title}
-              </li> // A chave agora é `option.id`
+              </li>
             )}
           />
 

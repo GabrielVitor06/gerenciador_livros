@@ -64,16 +64,5 @@
     "nota": 3.5,
     "comentario": "d",
     "id": 1745789391345
-  },
-  {
-    "titulo": "O Pequeno Príncipe Preto para pequenos",
-    "autores": "Rodrigo França",
-    "paginas": 34,
-    "imagem": "http://books.google.com/books/content?id=rRcIEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    "dataInicio": "2025-04-15",
-    "dataFim": "2025-04-26",
-    "nota": 2.5,
-    "comentario": "rrrrrrr",
-    "id": 1745789440735
   }
 ]
