@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback, useRef } from "react";
 import {
   TextField,
   Button,
@@ -13,19 +13,31 @@ import {
 } from "@mui/material";
 import axios from "axios";
 
+// Função de debounce para otimizar as requisições
+function useDebounce(callback: (...args: unknown[]) => void, delay: number) {
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const debouncedCallback = useCallback(
+    (...args: unknown[]) => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => {
+        callback(...args);
+      }, delay);
+    },
+    [callback, delay]
+  );
+
+  return debouncedCallback;
+}
+
 export default function BookForm({
   onLivroAdicionado,
 }: {
   onLivroAdicionado: () => void;
 }) {
   const [titulo, setTitulo] = useState("");
-  interface LivroInfo {
-    titulo: string;
-    autores: string;
-    paginas: number;
-    imagem: string;
-  }
-
   const [livroInfo, setLivroInfo] = useState<LivroInfo | null>(null);
   const [dataInicio, setDataInicio] = useState("");
   const [dataFim, setDataFim] = useState("");
@@ -34,6 +46,13 @@ export default function BookForm({
   const [suggestions, setSuggestions] = useState<
     { title: string; id: string }[]
   >([]);
+
+  interface LivroInfo {
+    titulo: string;
+    autores: string;
+    paginas: number;
+    imagem: string;
+  }
 
   async function buscarLivro() {
     if (!titulo) return;
@@ -65,21 +84,29 @@ export default function BookForm({
 
   async function salvarLivro() {
     if (!livroInfo) return;
-    await axios.post("/api/livros", {
-      ...livroInfo,
-      dataInicio,
-      dataFim,
-      nota,
-      comentario,
-    });
-    setTitulo("");
-    setLivroInfo(null);
-    setDataInicio("");
-    setDataFim("");
-    setNota(null);
-    setComentario("");
-    onLivroAdicionado();
+
+    try {
+      await axios.post("/api/livros", {
+        ...livroInfo,
+        dataInicio,
+        dataFim,
+        nota,
+        comentario,
+      });
+
+      setTitulo("");
+      setLivroInfo(null);
+      setDataInicio("");
+      setDataFim("");
+      setNota(null);
+      setComentario("");
+      onLivroAdicionado();
+    } catch (error) {
+      console.error("Erro ao salvar livro:", error);
+    }
   }
+
+  const buscarLivroComDebounce = useDebounce(buscarLivro, 500);
 
   return (
     <Card variant="outlined" sx={{ maxWidth: 600, margin: "0 auto", mb: 4 }}>
@@ -94,7 +121,7 @@ export default function BookForm({
             value={titulo}
             onInputChange={(event, newInputValue) => {
               setTitulo(newInputValue);
-              buscarLivro();
+              buscarLivroComDebounce();
             }}
             renderInput={(params) => (
               <TextField
@@ -106,7 +133,10 @@ export default function BookForm({
               />
             )}
             renderOption={(props, option) => (
-              <li {...props} key={option.id}>
+              <li
+                {...props}
+                key={`${option.id}-${option.title}-${Math.random()}`}
+              >
                 {option.title}
               </li>
             )}
