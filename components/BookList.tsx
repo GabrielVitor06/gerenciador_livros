@@ -31,7 +31,12 @@ export default function BookList({ recarregar }: { recarregar: boolean }) {
 
   async function carregarLivros() {
     const res = await axios.get("/api/livros");
-    setLivros(res.data);
+    const livrosOrdenados = res.data.sort(
+      (a: Livro, b: Livro) =>
+        new Date(b.dataInicio).getTime() - new Date(a.dataInicio).getTime()
+    );
+
+    setLivros(livrosOrdenados);
   }
 
   async function removerLivro(id: number) {
