@@ -1,16 +1,5 @@
 [
   {
-    "titulo": "Boruto: Naruto Next Generations, Vol. 1",
-    "autores": "Masashi Kishimoto,Ukyo Kodachi",
-    "paginas": 209,
-    "imagem": "http://books.google.com/books/content?id=0W0vDgAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-    "dataInicio": "2025-04-02",
-    "dataFim": "2025-04-24",
-    "nota": 5,
-    "comentario": "perfeito",
-    "id": 1745626543138
-  },
-  {
     "titulo": "Naruto - vol. 2",
     "autores": "Masashi Kishimoto, Luciane Yasawa",
     "paginas": 213,
@@ -31,38 +20,5 @@
     "nota": 5,
     "comentario": "top",
     "id": 1745628077643
-  },
-  {
-    "titulo": "Deixe seu código limpo e brilhante",
-    "autores": "José Yoshiriro",
-    "paginas": 176,
-    "imagem": "http://books.google.com/books/content?id=21W_EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    "dataInicio": "2025-04-02",
-    "dataFim": "2025-04-22",
-    "nota": 3.5,
-    "comentario": "Gjdhbs",
-    "id": 1745786580967
-  },
-  {
-    "titulo": "Desvendando o CodeIgniter 4",
-    "autores": "Jonathan Lamim Antunes",
-    "paginas": 246,
-    "imagem": "http://books.google.com/books/content?id=9A4FEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    "dataInicio": "2025-04-02",
-    "dataFim": "2025-04-09",
-    "nota": 2,
-    "comentario": "s",
-    "id": 1745788663221
-  },
-  {
-    "titulo": "Arte Da Guerra, a",
-    "autores": "",
-    "paginas": 204,
-    "imagem": "http://books.google.com/books/content?id=u_JBHNI85WUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    "dataInicio": "2025-04-09",
-    "dataFim": "2025-04-25",
-    "nota": 3.5,
-    "comentario": "d",
-    "id": 1745789391345
   }
 ]

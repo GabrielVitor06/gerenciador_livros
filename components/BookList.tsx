@@ -83,29 +83,43 @@ export default function BookList({ recarregar }: { recarregar: boolean }) {
             <CardContent
               sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}
             >
-              <Typography gutterBottom variant="h6" component="div" noWrap>
+              <Typography gutterBottom fontWeight={600} variant="subtitle1">
                 {livro.titulo}
               </Typography>
 
-              <Typography variant="body2" color="text.secondary">
-                Autores: {livro.autores}
+              <Typography variant="body2">
+                <Box component="span" fontWeight={600}>
+                  Autores:
+                </Box>{" "}
+                {livro.autores}
               </Typography>
 
-              <Typography variant="body2" color="text.secondary">
-                Páginas: {livro.paginas}
+              <Typography variant="body2">
+                <Box component="span" fontWeight={600}>
+                  Páginas:
+                </Box>{" "}
+                {livro.paginas}
               </Typography>
 
-              <Typography variant="body2" color="text.secondary">
-                Início: {livro.dataInicio}
+              <Typography variant="body2">
+                <Box component="span" fontWeight={600}>
+                  Início:
+                </Box>{" "}
+                {livro.dataInicio}
               </Typography>
 
-              <Typography variant="body2" color="text.secondary">
-                Fim: {livro.dataFim}
+              <Typography variant="body2">
+                <Box component="span" fontWeight={600}>
+                  Fim:
+                </Box>{" "}
+                {livro.dataFim}
               </Typography>
 
               <Stack direction="row" alignItems="center" spacing={1} mt={1}>
-                <Typography variant="body2" color="text.secondary">
-                  Nota:
+                <Typography variant="body2">
+                  <Box component="span" fontWeight={600}>
+                    Nota:
+                  </Box>
                 </Typography>
                 <Rating
                   value={livro.nota}
@@ -117,22 +131,27 @@ export default function BookList({ recarregar }: { recarregar: boolean }) {
 
               <Typography
                 variant="body2"
-                color="text.secondary"
                 sx={{
                   whiteSpace: "pre-line",
                   wordBreak: "break-word",
                   mt: 1,
                 }}
               >
-                Comentário:{"\n"}
-                {livro.comentario}
+                <Box component="span" fontWeight={600}>
+                  Comentário:{"\n"}
+                </Box>
+                {livro.comentario
+                  ? livro.comentario.charAt(0).toUpperCase() +
+                    livro.comentario.slice(1)
+                  : ""}
               </Typography>
             </CardContent>
 
-            <CardActions sx={{ mt: "auto" }}>
+            <CardActions>
               <Button
                 size="small"
                 color="error"
+                variant="contained"
                 fullWidth
                 onClick={() => removerLivro(livro.id)}
               >

@@ -100,6 +100,7 @@ export default function BookForm({
               <TextField
                 {...params}
                 label="Título do Livro"
+                size="small"
                 fullWidth
                 variant="outlined"
               />
@@ -111,7 +112,7 @@ export default function BookForm({
             )}
           />
 
-          <Button variant="contained" color="primary" onClick={buscarLivro}>
+          <Button variant="contained" size="small" onClick={buscarLivro}>
             Buscar Livro
           </Button>
 
@@ -137,6 +138,7 @@ export default function BookForm({
                 value={dataInicio}
                 onChange={(e) => setDataInicio(e.target.value)}
                 fullWidth
+                size="small"
                 InputLabelProps={{ shrink: true }}
               />
               <TextField
@@ -144,10 +146,11 @@ export default function BookForm({
                 type="date"
                 value={dataFim}
                 onChange={(e) => setDataFim(e.target.value)}
+                size="small"
                 fullWidth
                 InputLabelProps={{ shrink: true }}
               />
-              <div>
+              <Stack>
                 <Typography component="legend">Avaliação</Typography>
                 <Rating
                   name="user-rating"
@@ -155,7 +158,7 @@ export default function BookForm({
                   onChange={(event, newValue) => setNota(newValue)}
                   precision={0.5}
                 />
-              </div>
+              </Stack>
               <TextField
                 label="Comentário"
                 value={comentario}
@@ -163,8 +166,14 @@ export default function BookForm({
                 fullWidth
                 multiline
                 rows={3}
+                size="small"
               />
-              <Button variant="contained" color="success" onClick={salvarLivro}>
+              <Button
+                variant="contained"
+                size="small"
+                color="success"
+                onClick={salvarLivro}
+              >
                 Salvar Livro
               </Button>
             </>
