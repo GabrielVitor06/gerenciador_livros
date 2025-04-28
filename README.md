@@ -2,7 +2,13 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-Para usar apenas rodar um npm install e um npm run dev
+Para rodar o projeto:
+
+- npm install
+- npm run dev
+
+E-mail: a@gmail.com
+Senha: 123456
 
 First, run the development server:
 

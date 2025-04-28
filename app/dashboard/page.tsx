@@ -3,7 +3,9 @@
 import { useState } from "react";
 import BookForm from "@/components/BookForm";
 import BookList from "@/components/BookList";
-import { Container } from "@mui/material";
+import MenuAppBar from "@/components/Menu";
+import Footer from "@/components/footer";
+import { Box, Container } from "@mui/material";
 
 export default function Home() {
   const [recarregar, setRecarregar] = useState(false);
@@ -13,9 +15,13 @@ export default function Home() {
   }
 
   return (
-    <Container sx={{ py: 4 }}>
-      <BookForm onLivroAdicionado={livroAdicionado} />
-      <BookList recarregar={recarregar} />
-    </Container>
+    <Box display="flex" flexDirection="column" minHeight="100vh">
+      <MenuAppBar />
+      <Container sx={{ py: 4, flexGrow: 1 }}>
+        <BookForm onLivroAdicionado={livroAdicionado} />
+        <BookList recarregar={recarregar} />
+      </Container>
+      <Footer />
+    </Box>
   );
 }
