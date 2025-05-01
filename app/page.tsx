@@ -66,7 +66,7 @@ export default function LoginForm() {
             color="text.secondary"
             gutterBottom
           >
-            Faça login na sua conta
+            Entre com: a@gmail.com e 123456
           </Typography>
 
           {mensagem && (
