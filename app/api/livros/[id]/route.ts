@@ -16,11 +16,18 @@ function salvarLivros(livros: unknown[]) {
   fs.writeFileSync(caminhoArquivo, JSON.stringify(livros, null, 2));
 }
 
-export async function DELETE(
-  req: Request,
-  context: { params: { id: string } }
-) {
-  const id = context.params.id;
+// Agora a função DELETE vai usar o request como primeiro argumento
+export async function DELETE(request: Request) {
+  // Extraindo o id da URL usando request.nextUrl.pathname
+  const url = new URL(request.url);
+  const id = url.pathname.split("/").pop(); // Pega o id da URL
+
+  if (!id) {
+    return NextResponse.json(
+      { message: "ID do livro não fornecido" },
+      { status: 400 }
+    );
+  }
 
   const livros = lerLivros();
   const livrosFiltrados = livros.filter(
