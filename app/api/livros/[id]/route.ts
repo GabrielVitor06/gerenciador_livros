@@ -17,13 +17,16 @@ function salvarLivros(livros: unknown[]) {
 }
 
 export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
+  req: Request,
+  context: { params: { id: string } }
 ) {
+  const id = context.params.id;
+
   const livros = lerLivros();
   const livrosFiltrados = livros.filter(
-    (livro: { id: number }) => livro.id !== parseInt(params.id)
+    (livro: { id: number }) => livro.id !== parseInt(id)
   );
   salvarLivros(livrosFiltrados);
+
   return NextResponse.json({ message: "Livro removido" });
 }
